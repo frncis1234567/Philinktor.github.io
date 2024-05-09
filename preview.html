@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PREVIEW WEBSITE</title>
+
+</head>
+
+<body>
+    {% block content %}
+    <div id="warning-message">PLEASE BE VIGILANT ON WHAT YOU CLICK!</div>
+    <div id="preview-container">
+        {{ content | safe }}
+    </div>
+    {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <title>PHILINKTOR</title>
+    <!-- Existing meta tags -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* Additional styles */
+        .social-icons {
+            position: fixed;
+            bottom: 65px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1000; /* Ensure it's above other elements */
+            color: rgb(0, 0, 0); /* Icon color */
+            margin: 5px;
+            text-decoration: none;
+            position: fixed;
+            font-size: 50px; /* Adjust based on your icon size */
+        }
+
+        .social-icons a {
+            margin: 5px;
+            font-size: 26px; /* Icon size */
+            text-decoration: none;
+            display: inline-block; /* Allows the application of padding and other block properties */
+            background: linear-gradient(to right, rgb(115, 115, 116), rgb(0, 0, 0)); /* Gradient from black to white */
+            -webkit-background-clip: text; /* Applies the background only to the text */
+            color: transparent; /* Makes the text (icon) color transparent, showing the background */
+            background-clip: text; /* Applies the background only to the text (non-webkit browsers) */
+            text-decoration: none; /* Optional: Removes the underline from the link */
+        }
+
+        .social-icons a::before {
+            font-family: 'Font Awesome 5 Brands'; /* Adjust based on the specific version you are using */
+            display: block;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: black; /* Fallback color */
+        }
+
+        .social-icons a:hover {
+            color: #ffffff; /* Darker blue on hover, as an example */
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed; /* Changed from absolute to fixed to stick at the top */
+            top: 0; /* Position at the top */
+            left: 0; /* Stretch across from the left edge */
+            right: 0; /* Stretch across to the right edge */   
+            padding: 25px 30px; /* Adjusted padding for better appearance */
+            z-index: 100; /* Adjust z-index if needed to ensure navbar is on top */
+            background-color: transparent; /* Set the background color to transparent */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 10);
+        }
+
+        .nav-links {
+            display: flex;
+            margin-left: -100px;
+        }
+
+        .nav-links a {
+        color: rgb(0, 0, 0); /* Text color */
+        margin: 0 30px; /* Adjusted spacing between nav items */
+        font-weight: bold;
+        text-decoration: none; /* Remove default underline */
+        position: relative; /* Setup for positioning the pseudo-element */
+        overflow: hidden; /* Ensures the pseudo-element does not extend outside */
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 100%; /* Initially hide the underline */
+        bottom: 0; /* Position at the bottom of the link */
+        background: rgb(15, 15, 15); /* Underline color */
+        height: 1.5px; /* Thickness of the underline */
+        transition: right 0.3s ease-out; /* Animation for revealing the underline */
+    }
+
+    .nav-links a:hover::after, .nav-links a:focus::after {
+        right: 0; /* Reveal the underline on hover or focus */
+    }
+
+    .logo {
+        font-size: 25px; /* Set the font size */
+        font-weight: bold; /* Make the text bold */
+        color: black;
+        /* Add any other styling you need for the logo here */
+    }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="logo">SOVEREIGNTY</div>
+    </div>
+
+{% block content %}{% endblock %}
+
+<div class="social-icons">
+    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+</div>
+
+<div class="messenger-icon">
+    <a href="https://m.me/yourpageusername" class="messenger-link" target="_blank">
+        <i class="fa-brands fab fa-facebook-messenger"></i>
+    </a>
+</div>
+
+{% if '/preview' not in request.path %}
+<div class="app-footer">
+    &nbsp;<a href="" target="_blank" rel="noopener"><strong>OBLIVIONOVA</strong></a>
+</div>
+{% endif %}
+
+</body>
+</html>
